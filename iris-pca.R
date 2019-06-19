@@ -4,11 +4,11 @@
 #install.packages("grid")
 
 library('csvread')
-library('ggplot2') # visualização dos dados em gáficos
-library('gridExtra')
-library('grid')
-library('dplyr')
-library('cowplot')
+library(ggplot2) # visualização dos dados em gáficos
+library(gridExtra)
+library(grid)
+library(dplyr)
+library(cowplot)
 
 
 
@@ -67,7 +67,11 @@ colors <- colors[as.numeric(pca_data$species)]
 
 scatterplot3d(pca_data[,1:3], pch = 16, color=colors)
 
-forward(iris, alpha = 0.2, full = FALSE, force.in)
+### FORWARD AND BACKWARD
+#function step()
+step(lm(species ~ ., data = newDs), direction = 'forward', trace = 0)
+step(lm(species ~ ., data = newDs), direction = 'backward', trace = 0)
+
 
 
 
